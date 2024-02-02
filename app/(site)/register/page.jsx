@@ -9,7 +9,15 @@ export default function Register() {
     const [data, setData] = useState({
          name: '',
           email: '',
-           password: ''
+           password: '',
+           dateOfGrad: '',
+          
+          website: '',
+          location: '',
+          bio: '',
+          fieldOfInterest: "",
+          seeking: "",
+          techStack: ""
          })
 
          const registerUser = async (e) => {
@@ -29,7 +37,7 @@ export default function Register() {
               alt="Your Company"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Register for an account
+              Register for the Student
             </h2>
           </div>
   
@@ -93,6 +101,104 @@ export default function Register() {
                   />
                 </div>
               </div>
+              <div>
+      <label htmlFor="dateOfGrad" className="block text-sm font-medium leading-6 text-gray-900">
+        Date of Graduation
+      </label>
+      <input
+        id="dateOfGrad"
+        name="dateOfGrad"
+        type="date"
+        required
+        value={data.dateOfGrad}
+        onChange={e => setData({ ...data, dateOfGrad: e.target.value })}
+        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div>
+
+    <div>
+      <label htmlFor="github" className="block text-sm font-medium leading-6 text-gray-900">
+        GitHub Username
+      </label>
+      <input
+        id="github"
+        name="github"
+        type="text"
+        autoComplete="username"
+        required
+        value={data.github}
+        onChange={e => setData({ ...data, github: e.target.value })}
+        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div>
+
+    <div>
+      <label htmlFor="website" className="block text-sm font-medium leading-6 text-gray-900">
+        Website URL
+      </label>
+      <input
+        id="website"
+        name="website"
+        type="url"
+        value={data.website}
+        onChange={e => setData({ ...data, website: e.target.value })}
+        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div>
+
+    <div>
+      <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">
+        Location
+      </label>
+      <select
+        id="location"
+        name="location"
+        required
+        value={data.location}
+        onChange={e => setData({ ...data, location: e.target.value })}
+        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      >
+        {/* Add options for location */}
+        <option value="Brisbane">Brisbane</option>
+        {/* ... other location options */}
+      </select>
+    </div>
+
+    <div>
+      <label htmlFor="bio" className="block text-sm font-medium leading-6 text-gray-900">
+        Bio
+      </label>
+      <textarea
+        id="bio"
+        name="bio"
+        required
+        value={data.bio}
+        onChange={e => setData({ ...data, bio: e.target.value })}
+        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div>
+
+    {/* Assuming fieldOfInterest is a single select dropdown */}
+    <div>
+      <label htmlFor="fieldOfInterest" className="block text-sm font-medium leading-6 text-gray-900">
+        Field of Interest
+      </label>
+      <select
+        id="fieldOfInterest"
+        name="fieldOfInterest"
+        required
+        value={data.fieldOfInterest}
+        onChange={e => setData({ ...data, fieldOfInterest: e.target.value })}
+        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      >
+        {/* Add options for fieldOfInterest */}
+        <option value="Security">Security</option>
+        {/* ... other field of interest options */}
+      </select>
+    </div>
+
+    {/* For checkboxes like 'seeking' and 'techStack', repeat the input for each option */}
+    {/* ... */}
   
               <div>
                 <button
@@ -109,9 +215,9 @@ export default function Register() {
             <button onClick={() => signIn('google')} className="bg-red-500 text-white w-full">Sign In</button>
   
             <p className="mt-10 text-center text-sm text-gray-500">
-              Not a member?{' '}
+              
               <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                Start a 14 day free trial
+                
               </a>
             </p>
           </div>

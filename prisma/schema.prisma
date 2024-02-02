@@ -11,33 +11,36 @@ datasource db {
 }
 
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
   name           String?
-  email          String?   @unique
+  email          String?    @unique
   emailVerified  DateTime?
-  image          String?
   hashedPassword String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-
-  accounts Account[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  accounts       Account[]
 }
 
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String  @db.ObjectId
+  id                String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String     @db.ObjectId
   type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String? @db.String
+  dateOfGrad        DateTime?
+  website_URL       String
+  location          String?
+  bio               String?
+  fieldOfInterest   String[]   // Assuming this is an array of strings
+  seeking           String[]   // Assuming this is an array of strings, like ['Internship', 'Remote']
+  techStack         String[]
+  
+  refresh_token     String?    @db.String
+  access_token      String?    @db.String
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.String
+  id_token          String?    @db.String
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
+  user              User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  
 }
